@@ -1,8 +1,9 @@
 import React from 'react'
+import Layout from '../../Components/Layout'
 
 function SignIn() {
   return (
-    <div className='bg-orange-100'>SignIn</div>
+    <Layout>SignIn</Layout>
   )
 }
 
