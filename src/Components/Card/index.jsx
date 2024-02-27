@@ -7,10 +7,15 @@ const Card = (data) => {
 
     const context = useContext(ShoopingCartContext)
 
+    const showProduct = (productDetail) => {
+        context.openProductDetail()
+        context.setProductToShow(productDetail)
+    }
+
   return (
     <div 
     className="bg-white cursor-pointer w-56 h-60 rounded-lg"
-    onClick={() => context.openProductDetail()}>
+    onClick={() => showProduct(data.data)}>
         <figure className='relative mb-2 w-full h-4/5'>
             <span className=' absolute bottom-0 left-0 bg-amber-900/60 rounded-lg text-white text-xs m-2 px-3 py-0.5'>
                 {data.data.category}
