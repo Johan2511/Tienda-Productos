@@ -16,18 +16,20 @@ const CheckOutSideMenu = () => {
               <XMarkIcon className='h-6 w-6 text-brown cursor-pointer'></XMarkIcon>
             </div>
         </div>
-        {
-          context.cartProducts.map(product => {
-            return (
-            <OrderCard 
-            key={product.id}
-            title={product.title} 
-            imgUrl={product.image} 
-            price={product.price} 
-            />
-            )
-          })
-        }
+        <div className='overflow-y-scroll'>
+          {
+            context.cartProducts.map(product => {
+              return (
+              <OrderCard 
+              key={product.id}
+              title={product.title} 
+              imgUrl={product.image} 
+              price={product.price} 
+              />
+              )
+            })
+          }
+        </div>
     </aside>
   )
 }
