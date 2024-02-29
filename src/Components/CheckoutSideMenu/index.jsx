@@ -8,6 +8,11 @@ const CheckOutSideMenu = () => {
 
   const context = useContext(ShoopingCartContext)
 
+  const handleDelete = (id) => {
+    const filteredProducts = context.cartProducts.filter(product => product.id != id)
+    context.setCartProducts(filteredProducts)
+  }
+
   return (
     <aside className={`${context.isCheckoutSideMenuOpen ? 'flex': 'hidden'} checkout-side-menu  flex-col fixed top-20 right-0 border border-black rounded-lg bg-white`}>
         <div className='flex justify-between items-center p-6'>
@@ -22,9 +27,11 @@ const CheckOutSideMenu = () => {
               return (
               <OrderCard 
               key={product.id}
+              id={product.id}
               title={product.title} 
               imgUrl={product.image} 
-              price={product.price} 
+              price={product.price}
+              handleDelete={handleDelete} 
               />
               )
             })
