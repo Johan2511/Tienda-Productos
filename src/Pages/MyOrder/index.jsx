@@ -21,7 +21,7 @@ function MyOrder() {
         </Link>
         <h1>My Order</h1>
       </div>
-      <div className='flex flex-col w-80 gap-2'>
+      <div className='flex flex-col w-80 gap-2 border border-black rounded-lg py-3'>
       {
             context.order?.[index]?.products.map(product => {
               return (
