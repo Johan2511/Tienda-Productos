@@ -8,7 +8,7 @@ const context = useContext(ShoopingCartContext)
 const activeStyle = 'underline underline-offset-4'
 
   return (
-    <nav className='flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light'>
+    <nav className='flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light bg-amber-400'>
         <ul className='flex items-center gap-3'>
             <li className='font-extrabold text-lg'>
                 <NavLink to='/'>
@@ -18,6 +18,7 @@ const activeStyle = 'underline underline-offset-4'
             <li>
                 <NavLink 
                     to='/'
+                    onClick={() => context.setSelectedCategory()}
                     className={({ isActive }) =>
                     isActive ? activeStyle : undefined}>
                     All
@@ -25,15 +26,17 @@ const activeStyle = 'underline underline-offset-4'
             </li>
             <li>
                 <NavLink 
-                    to='/clothes'
+                    to='/mens clothing'
+                    onClick={() => context.setSelectedCategory("men's clothing")}
                     className={({ isActive }) =>
                     isActive ? activeStyle : undefined}>
-                    Clothes
+                    Men´s clothing
                 </NavLink>
             </li>
             <li>
                 <NavLink 
                     to='/electronics'
+                    onClick={() => context.setSelectedCategory('electronics')}
                     className={({ isActive }) =>
                     isActive ? activeStyle : undefined}>
                     Electronics
@@ -41,23 +44,26 @@ const activeStyle = 'underline underline-offset-4'
             </li>
             <li>
                 <NavLink 
-                    to='/fornitures'
+                    to='/jewelery'
+                    onClick={() => context.setSelectedCategory('jewelery')}
                     className={({ isActive }) =>
                     isActive ? activeStyle : undefined}>
-                    Fornitures
+                    Jewelery
                 </NavLink>
             </li>
             <li>
                 <NavLink 
-                    to='/toys'
+                    to='/womens clothing'
+                    onClick={() => context.setSelectedCategory("women's clothing")}
                     className={({ isActive }) =>
                     isActive ? activeStyle : undefined}>
-                    Toys
+                    Women's clothing
                 </NavLink>
             </li>
             <li>
                 <NavLink 
                     to='/others'
+                    onClick={() => context.setSelectedCategory('others')}
                     className={({ isActive }) =>
                     isActive ? activeStyle : undefined}>
                     Others
@@ -94,7 +100,7 @@ const activeStyle = 'underline underline-offset-4'
             </li>
             <li className='flex item-center'>
                 <ShoppingBagIcon className='h-6 w-6 text-black'></ShoppingBagIcon>
-                <div> {context.count}</div>
+                <div> {context.cartProducts.length}</div>
             </li>
         </ul>
     </nav>

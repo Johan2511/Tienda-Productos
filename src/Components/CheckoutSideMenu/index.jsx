@@ -28,6 +28,7 @@ const CheckOutSideMenu = () => {
     context.setCount(0) // Reinicia el contador a 0
 
     context.closeCheckoutSideMenu() //Cerrar ventana al agregar los productos a la orden
+    context.setSearchByTitle(null)
   }
 
   return (
