@@ -7,12 +7,68 @@ const Navbar = () => {
 const context = useContext(ShoopingCartContext)
 const activeStyle = 'underline underline-offset-4'
 
+// Sign Out
+const singOut = localStorage.getItem('sign-out')
+const parsedSignOut = JSON.parse(singOut)
+const inUserSignOut = context.singOut || parsedSignOut
+
 
 // Stringifiar la información
 const handleSignOut = () => {
     const stringifiedSignOut = JSON.stringify(true)
     localStorage.setItem('sign-out', stringifiedSignOut)
     context.setSignOut(true)
+}
+
+const renderView = () => {
+    if (inUserSignOut) {
+        return (
+            <li>
+                <NavLink 
+                    to='/sign-in'
+                    className={({ isActive }) =>
+                    isActive ? activeStyle : undefined}
+                    onClick={() => handleSignOut()}>
+                Sign In
+                </NavLink>
+            </li>
+        )    
+    } else {
+        <>
+            <li className='text-black/60'>
+                CorreoFalso123@gmail.com
+            </li>
+            <li>
+                <NavLink 
+                    to='/my-orders'
+                    className={({ isActive }) =>
+                    isActive ? activeStyle : undefined}>
+                    My Orders
+                </NavLink>
+            </li>
+            <li>
+                <NavLink 
+                    to='/my-account'
+                    className={({ isActive }) =>
+                    isActive ? activeStyle : undefined}>
+                    My Account
+                </NavLink>
+            </li>
+            <li>
+                <NavLink 
+                    to='/sign-in'
+                    className={({ isActive }) =>
+                    isActive ? activeStyle : undefined}
+                    onClick={() => handleSignOut()}>
+                Sign In
+                </NavLink>
+            </li>
+            <li className='flex item-center'>
+                <ShoppingBagIcon className='h-6 w-6 text-black'></ShoppingBagIcon>
+                <div> {context.cartProducts.length}</div>
+            </li>
+        </>
+    }
 }
 
   return (
@@ -79,34 +135,8 @@ const handleSignOut = () => {
             </li>
         </ul>
         <ul className='flex items-center gap-3'>
-            <li className='text-black/60'>
-                CorreoFalso123@gmail.com
-            </li>
-            <li>
-                <NavLink 
-                    to='/my-orders'
-                    className={({ isActive }) =>
-                    isActive ? activeStyle : undefined}>
-                    My Orders
-                </NavLink>
-            </li>
-            <li>
-                <NavLink 
-                    to='/my-account'
-                    className={({ isActive }) =>
-                    isActive ? activeStyle : undefined}>
-                    My Account
-                </NavLink>
-            </li>
-            <li>
-                <NavLink 
-                    to='/sign-in'
-                    className={({ isActive }) =>
-                    isActive ? activeStyle : undefined}
-                    onClick={() => handleSignOut()}>
-                Sign In
-                </NavLink>
-            </li>
+            {renderView()}
+            
             <li className='flex item-center'>
                 <ShoppingBagIcon className='h-6 w-6 text-black'></ShoppingBagIcon>
                 <div> {context.cartProducts.length}</div>
