@@ -26,11 +26,12 @@ function SignIn() {
       password: formData.get('password'),
     }
 
-    // Guardar la cuenta en el Local Storage
+    // Guardar la cuenta en el Local Storage y crearla
     const stringifiedAccount = JSON.stringify(data)
     localStorage.setItem('account', stringifiedAccount)
     context.setAccount(data)
-
+    // sign In
+    handleSignIn()
     console.log(data);
   }
   
@@ -76,16 +77,15 @@ function SignIn() {
                 />
               </div>
               <div className="flex flex-col items-center justify-between ">
-                <button
-                  className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 mb-2 rounded focus:outline-none focus:shadow-outline w-full"
-                  type="submit"
-                  onClick={() => handleSignIn()}
-                  disabled={!hasUserAnAccount}
-                >
-                  Log In
-                </button>
+              
+                  <button
+                    className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 mb-2 rounded focus:outline-none focus:shadow-outline w-full"
+                    type="submit"
+                    onClick={() => handleSignIn()}
+                    disabled={!hasUserAnAccount}>
+                    <Link to={'/'} >Log In</Link> 
+                  </button>
                 <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline w-full" 
-                href="#" 
                 onClick={() => setView('create-user-info')}
                 disabled={hasUserAnAccount}>
                 Sign up
@@ -137,12 +137,13 @@ const renderCreateUserInfo = () => {
           placeholder='********'
           className='rounded-lg border border-black/60 focus:outline-none py-2 px-4' />
       </div>
-      <Link to="/" >
-        <button className='bg-blue-500 hover:bg-blue-700 text-white w-full rounded-lg py-3'
+      
+      <Link to="/">
+      <button className='bg-blue-500 hover:bg-blue-700 text-white w-full rounded-lg py-3' 
         onClick={() => createAnAccount()}>
-          Create
-        </button>
-      </Link>
+        Create
+      </button>
+    </Link>
     </form>
   )
 }

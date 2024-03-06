@@ -8,9 +8,9 @@ const context = useContext(ShoopingCartContext)
 const activeStyle = 'underline underline-offset-4'
 
 // Sign Out
-const singOut = localStorage.getItem('sign-out')
-const parsedSignOut = JSON.parse(singOut)
-const inUserSignOut = context.singOut || parsedSignOut
+const signOut = localStorage.getItem('sign-out')
+const parsedSignOut = JSON.parse(signOut)
+const isUserSignOut = context.singOut || parsedSignOut
 
 
 // Stringifiar la información
@@ -21,7 +21,7 @@ const handleSignOut = () => {
 }
 
 const renderView = () => {
-    if (inUserSignOut) {
+    if (isUserSignOut) {
         return (
             <li>
                 <NavLink 
@@ -29,11 +29,12 @@ const renderView = () => {
                     className={({ isActive }) =>
                     isActive ? activeStyle : undefined}
                     onClick={() => handleSignOut()}>
-                Sign In
+                Sign Out
                 </NavLink>
             </li>
         )    
     } else {
+        return(
         <>
             <li className='text-black/60'>
                 CorreoFalso123@gmail.com
@@ -60,7 +61,7 @@ const renderView = () => {
                     className={({ isActive }) =>
                     isActive ? activeStyle : undefined}
                     onClick={() => handleSignOut()}>
-                Sign In
+                Sign Out
                 </NavLink>
             </li>
             <li className='flex item-center'>
@@ -68,6 +69,7 @@ const renderView = () => {
                 <div> {context.cartProducts.length}</div>
             </li>
         </>
+        )
     }
 }
 
