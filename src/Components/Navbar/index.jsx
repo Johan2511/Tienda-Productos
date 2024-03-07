@@ -33,7 +33,7 @@ const renderView = () => {
         return (
             <>
             <li className='text-black/60'>
-                CorreoFalso123@gmail.com
+                {parsedAccount?.email}
             </li>
             <li>
                 <NavLink 
