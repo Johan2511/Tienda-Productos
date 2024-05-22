@@ -28,12 +28,12 @@ const noAccountInLocalStorage = parsedAccount ? Object.keys(parsedAccount).lengt
   const isUserSignOut = context.signOut || parsedSignOut
 
   let routes = useRoutes([
-    {path: '/', element: hasUserAnAccount && !isUserSignOut ? <Home /> : <Navigate replace to={'sign-in'} />},
-    {path: '/mens clothing', element: hasUserAnAccount && !isUserSignOut ? <Home /> : <Navigate replace to={'sign-in'} />},
-    {path: '/electronics', element: hasUserAnAccount && !isUserSignOut ? <Home /> : <Navigate replace to={'sign-in'} />},
-    {path: '/jewelery', element: hasUserAnAccount && !isUserSignOut ? <Home /> : <Navigate replace to={'sign-in'} />},
-    {path: '/womens clothing', element: hasUserAnAccount && !isUserSignOut ? <Home /> : <Navigate replace to={'sign-in'} />},
-    {path: '/others', element: hasUserAnAccount && !isUserSignOut ? <Home /> : <Navigate replace to={'sign-in'} />},
+    {path: '/', element: hasUserAnAccount && !isUserSignOut ? <Home /> : <Navigate replace to={'/sign-in'} />},
+    {path: '/mens clothing', element: hasUserAnAccount && !isUserSignOut ? <Home /> : <Navigate replace to={'/sign-in'} />},
+    {path: '/electronics', element: hasUserAnAccount && !isUserSignOut ? <Home /> : <Navigate replace to={'/sign-in'} />},
+    {path: '/jewelery', element: hasUserAnAccount && !isUserSignOut ? <Home /> : <Navigate replace to={'/sign-in'} />},
+    {path: '/womens clothing', element: hasUserAnAccount && !isUserSignOut ? <Home /> : <Navigate replace to={'/sign-in'} />},
+    {path: '/others', element: hasUserAnAccount && !isUserSignOut ? <Home /> : <Navigate replace to={'/sign-in'} />},
     {path: '/my-account', element: <MyAccount />},
     {path: '/my-order', element: <MyOrder />},
     {path: '/my-orders', element: <MyOrders />},
